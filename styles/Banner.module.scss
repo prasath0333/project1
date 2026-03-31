@@ -2,75 +2,52 @@
 @import './mixins.scss';
 
 .spotlight {
+  position: relative; // VERY IMPORTANT
   display: flex;
   align-items: flex-end;
   width: 100%;
   height: 85vh;
-
-  @include for-mobile-only {
-    height: 64vh;
-  }
+  overflow: hidden;
 
   &__image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 92%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
-    object-fit: fill;
-    mask-image: linear-gradient(to bottom, $secondary 36%, transparent 100%);
-
-    @include for-mobile-only {
-      height: 68vh;
-    }
   }
 
   &__details {
+    position: relative;
     z-index: 10;
     width: 35%;
     margin-left: 3.5rem;
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
-
-    @include for-mobile-only {
-      width: 75%;
-      justify-content: center;
-      text-align: center;
-      align-self: flex-end;
-      margin-bottom: 0.7rem;
-      margin-left: 2.9rem;
-    }
+    margin-bottom: 3rem;
+    color: white;
 
     .title {
-      font-weight: 600;
-      padding: 0.4rem;
-
-      @include fluid-type(2.2rem, 2.8rem);
+      font-size: 2.5rem;
+      font-weight: 700;
     }
 
     .synopsis {
-      font-weight: 400;
-      padding: 0.3rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-
-      @include fluid-type(0.9rem, 1.3rem);
+      margin-top: 1rem;
+      line-height: 1.4;
+      max-width: 500px;
     }
 
     .buttonRow {
+      margin-top: 1rem;
       display: flex;
-      flex-direction: row;
-      margin: 0.3rem 0;
+      gap: 1rem;
 
-      @include for-mobile-only {
-        justify-content: center;
+      button {
+        padding: 0.6rem 1.4rem;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
       }
     }
   }
